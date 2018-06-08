@@ -88,3 +88,16 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+"""
+参考官网说明，添加如下配置信息
+"""
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+SCHEDULER_PERSIST = True
+ITEM_PIPELINES = {
+    'scrapy_redis.pipelines.RedisPipeline': 400,
+}
+DOWNLOAD_DELAY = 3
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
